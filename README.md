@@ -37,7 +37,7 @@ python dilate_CNN_RN_classify_new.py
 
 ## Activation map visualization
 * The visualization requires the keras-vis library.
-* Refer to the `GRAD_CAM` folder to generate activation maps using the pretrained models (both weights in .h5 files and model architecture in .json files) and the test data inside `GRAD_CAM/processed_data/expressive_data_or_receptive_data`.
+* Refer to the `GRAD_CAM` and `GRAD_CAM/keras-vis` folder to generate activation maps using the pretrained models (both weights in .h5 files and model architecture in .json files) and the test data inside `GRAD_CAM/processed_data/expressive_data_or_receptive_data`.
 * The script to generate the activation maps are located inside `GRAD_CAM/keras-vis`. The scripts to generate activation maps for seizure classification are: `GRAD_CAM_EP_class_0_seizure.py` and `GRAD_CAM_EP_class_1_seizure.py`. The scripts to generate activation maps for language impairments are: `GRAD_RAM_EP_expressive.py` and `GRAD_RAM_EP_receptive.py`.
 * Note 1: The paths to the test dataset must be provided correctly inside all the scripts.
 * Note 2: The top 20 predictions are considered for visualization.
