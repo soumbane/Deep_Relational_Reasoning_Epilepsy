@@ -7,7 +7,7 @@ close all
 clc
 
 %% Load data
-dir = 'C:\Users\soumy\Dropbox (Personal)\Wayne_State_PhD\Lab_work\Connectome_regression_data\';
+dir = 'Path to Connectome_regression_data\';
 density = '04';
 filename_expr = strcat('X_expressive_q_',density,'.mat');
 filepath_expr = strcat(dir,filename_expr);
@@ -65,7 +65,7 @@ end
 
 %% expressive data
 
-save_dir = 'C:\Users\soumy\Dropbox (Personal)\Wayne_State_PhD\Lab_work\Connectome_regression_data\processed_data\expressive_data\original_data\';
+save_dir = 'Path to Connectome_regression_data\processed_data\expressive_data\original_data\';
 
 % save the augmented train and test expressive data
 save(strcat(save_dir,'x_train_expressive_density_',density,'.mat'),'x_train_expressive_mat','-v7.3');
@@ -86,7 +86,7 @@ save(strcat(save_dir,'y_test_expressive_density_',density,'.mat'),'y_test_expres
 
 %% receptive data
 
-save_dir = 'C:\Users\soumy\Dropbox (Personal)\Wayne_State_PhD\Lab_work\Connectome_regression_data\processed_data\receptive_data\original_data\';
+save_dir = 'Path to Connectome_regression_data\processed_data\receptive_data\original_data\';
 
 % save the augmented train and test receptive data
 save(strcat(save_dir,'x_train_receptive_density_',density,'.mat'),'x_train_receptive_mat','-v7.3');

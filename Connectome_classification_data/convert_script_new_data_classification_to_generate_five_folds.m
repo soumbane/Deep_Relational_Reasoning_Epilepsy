@@ -9,7 +9,7 @@ close all
 clc
 
 %% Load data
-dir = 'C:\Users\soumy\Dropbox (Personal)\Wayne_State_PhD\Lab_work\Connectome_classification_data\';
+dir = 'Path to Connectome_classification_data\';
 
 density = '04';
 filename_expr = strcat('X_sz_q_',density,'.mat');
@@ -61,7 +61,7 @@ end
 
 %% Save Data
 
-save_dir = 'C:\Users\soumy\Dropbox (Personal)\Wayne_State_PhD\Lab_work\Connectome_classification_data\new_classification_data\fold1\';
+save_dir = 'Path to Connectome_classification_data\new_classification_data\fold1\';
 
 % save the augmented train and test expressive data
 save(strcat(save_dir,'x_train_density_',density,'.mat'),'x_train_mat','-v7.3');
