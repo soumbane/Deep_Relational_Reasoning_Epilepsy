@@ -11,25 +11,17 @@ This is the official TensorFlow (Keras) implementation of the paper "[Deep Relat
 ## Get Started
 The following steps are required to replicate our work:
 
-1. Download datasets.
-* JHU Dataset - Download [JHU COVID time-series data](https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series) (download `time_series_covid19_confirmed_US.csv` for daily US infected cases and `time_series_covid19_deaths_US.csv` for daily US death cases) and save in `data/COVID_JHU` directory. This project used `Mar 15,2020 - Nov 30,2021` for analysis. 
-* NYT Dataset - Download [NYT COVID time-series data](https://github.com/nytimes/covid-19-data) (download `us-states.csv` for daily US infected and death cases) and save in `data/COVID_NYT` directory. This project used `Mar 18,2020 - Nov 30,2021` for analysis. 
+The step 2 below is followed in our paper. Note that the data of 51 patients has already been augmented to 510 augmentations per patient (per vector) using SMOTE augmentation.
 
-2. Generate Feature Matrix (X) and Adjacency Matrix (W) from downloaded datasets.
-* JHU Dataset (US) - Inside the folder `data/COVID_JHU`, run the file `Generate_51_states_X_W.py` to generate X and W matrix for 50 states of US and Washington D.C. (51 nodes of graph).
-* JHU Dataset (Michigan) - Inside the folder `data/COVID_JHU`, run the file `Generate_51_states_X_W_Michigan.py` to generate X and W matrix for 83 counties of the state of Michigan (83 nodes of graph).
-* NYT Dataset (US) - Inside the folder `data/COVID_NYT`, run the file `Generate_51_states_X_W_NYT.py` to generate X matrix for 50 states of US and Washington D.C. (51 nodes of graph). We used the same adjacency matrix (W) as generated using JHU dataset.
+1. Preprocess datasets to divide original dataset into training and testing (51 patients: train - 41 and test - 10 patients).
+Use the raw data (private) of different densities (Densities used in paper: 01-High; 04-Medium; 08-Low) consisting of vectors for each of the 51 patients and convert each vector to a 116x116 connectome matrix for each patient.
+* Language Impairment Dataset (Regression) - Use the expressive and receptive raw data, `X_expressive_q_04.mat` or `X_receptive_q_04.mat`, where `04` denotes the density of the connectome data. Use the script `convert_script_regression_original_data.m` inside `Connectome_regression_data` folder to convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores.     
+* Seizure Outcome Dataset (Classification) - 
 
-3. Generate Train, Validation and Test datasets from the generated X matrix.
-* We divided the entire dataset in chronological order with 80% training, 10% validation and 10% testing.
-* Run the file `generate_training_data.py` to generate the processed files `train.npz, val.npz, test.npz` from X matrix and save the processed files in `data/COVID_JHU/processed` or `data/COVID_NYT/processed`. Use the `confirmed` or `deaths` in the argument to generate infected and death cases processed files respectively.
-```
-# For JHU Daily Infected cases data
-python generate_training_data.py --traffic_df_filename "data/COVID_JHU/covid19_confirmed_US_51_states_X_matrix_final.csv" 
-
-# For NYT Daily Death cases data
-python generate_training_data.py --traffic_df_filename "data/COVID_NYT/covid19_NYT_deaths_US_51_states_X_matrix_final.csv"
-```
+2. Preprocess dataset and generate the five folds (both training and testing) of all 51 patients and their augmentations.
+Use the raw data (private) of different densities (Densities used in paper: 01-High; 04-Medium; 08-Low) consisting of vectors for each of the 51 patients and 510 augmentations per patient (i.e., 510*51 + 51 = 26061 vectors). First divide the data and the corresponding augmentations into training (41 patients + augmentations) and testing (10 patients and augmentations). Then, convert each vector to a 116x116 connectome matrix for each patient. 
+* Language Impairment Dataset (Regression) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores. The data is saved to `Connectome_regression_data/processed_data/expressive_data/foldk`, where `k` is the fold number.     
+* Seizure Outcome Dataset (Classification) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores and divide into 5-folds for the 5-fold cross validation.  
 
 ## Training
 
