@@ -6,6 +6,7 @@ This is the official TensorFlow (Keras) implementation of the paper "[Deep Relat
 ## Requirements
 * Python >= 3.6
 * [TensorFlow](https://www.tensorflow.org/) >= 2.0
+* [Keras](https://keras.io/) >= 2.2
 * [keras-vis](https://raghakot.github.io/keras-vis/) (for GRAD-CAM visualization)
 * [mat73](https://pypi.org/project/mat73/)
 
