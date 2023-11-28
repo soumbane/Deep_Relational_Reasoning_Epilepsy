@@ -28,10 +28,7 @@ epochs = 1000
 ################################################################################
 
 
-dir_name = 'processed_data/expressive_data/fold3/'
-
-#dir_name = 'shuffle_processed_data/expressive_data/no_shuffle/'
-#dir_name = 'shuffle_processed_data/expressive_data/s1/'
+dir_name = 'path to expressive_data/fold3/' # change this to whichever fold you want to test on
 
 density = '04'
 #density = '04_'

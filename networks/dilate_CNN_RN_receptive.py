@@ -24,10 +24,7 @@ epochs = 1000
 ################################ LOAD DATA #####################################
 ################################################################################
 
-dir_name = 'processed_data/receptive_data/fold1/'
-
-#dir_name = 'shuffle_processed_data/receptive_data/no_shuffle/'
-#dir_name = 'shuffle_processed_data/receptive_data/s10/'
+dir_name = 'path to receptive_data/fold1/' # change this to whichever fold you want to test on
 
 density = '04'
 #density = '04_'
@@ -68,19 +65,6 @@ y_train = np.zeros((x_train_mat.shape[2],1),dtype=np.float32)
 
 x_test = np.zeros((x_test_mat.shape[2],116,116,1),dtype=np.float32)
 y_test = np.zeros((x_test_mat.shape[2],1),dtype=np.float32)
-
-'''
-for i in range(x_train_mat.shape[2]):
-    temp = x_train_mat[:,:,i]
-    temp = np.triu(temp,1)
-    x_train[i,:,:,0] = x_train_mat[:,:,i]
-    y_train[i,0] = y_train_mat[i,0] # RECEPTIVE SCORE
-        
-for i in range(x_test_mat.shape[2]):
-    temp = x_test_mat[:,:,i]
-    temp = np.triu(temp,1)
-    x_test[i,:,:,0] = x_test_mat[:,:,i]
-    y_test[i,0] = y_test_mat[i,0]  # RECEPTIVE SCORE'''
     
 
 for i in range(x_train_mat.shape[2]):

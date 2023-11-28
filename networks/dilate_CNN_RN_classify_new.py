@@ -31,12 +31,7 @@ epochs = 30
 ################################ LOAD DATA #####################################
 ################################################################################
 
-
-#dir_name = 'new_classification_data/old_data_1_fold_test/'
-#dir_name = 'shuffle_new_classification_data/no_shuffle/'
-#dir_name = 'shuffle_new_classification_data/s1/'
-
-dir_name = 'new_classification_data/fold2/'
+dir_name = 'path to classification_data/fold2/' # change this to whichever fold you want to test on
 
 density = '08'
 #density = '04_'
