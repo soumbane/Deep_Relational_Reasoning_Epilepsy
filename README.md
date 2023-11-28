@@ -7,6 +7,7 @@ This is the official TensorFlow (Keras) implementation of the paper "[Deep Relat
 * Python >= 3.6
 * [TensorFlow](https://www.tensorflow.org/) >= 2.0
 * [keras-vis](https://raghakot.github.io/keras-vis/) (for GRAD-CAM visualization)
+* [mat73](https://pypi.org/project/mat73/)
 
 ## Get Started (Preprocessing)
 The following steps are required to replicate our work:
@@ -19,9 +20,9 @@ The following steps are required to replicate our work:
 ## Training
 
 * All the training scripts are located in the `networks` folder.
-* Train the model
+* Train the expressive score model
 ```
-python train.py --epochs 100 --learning_rate 0.001 --expid 1 --print_every 20
+python dilate_CNN_RN_expressive.py
 ```
 
 ## Testing
