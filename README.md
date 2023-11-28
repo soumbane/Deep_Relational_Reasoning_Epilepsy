@@ -18,11 +18,8 @@ The following steps are required to replicate our work:
 
 ## Training
 
-1. Define paths and hyper-parameters in configuration files.
-* Refer to the files `config/COVID_JHU.conf` and `config/COVID_NYT.conf` for the data paths, hyper-parameters and model configurations used for training and testing. 
-* The `sensors_distance` in the config files indicate the path to the adjacency matrix W.
-
-2. Train the model
+* All the training scripts are located in the `networks` folder.
+* Train the model
 ```
 python train.py --epochs 100 --learning_rate 0.001 --expid 1 --print_every 20
 ```
