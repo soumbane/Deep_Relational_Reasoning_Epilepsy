@@ -1,0 +1,1 @@
+Store the model weights (.h5 file) and model architecture (.json) here.
