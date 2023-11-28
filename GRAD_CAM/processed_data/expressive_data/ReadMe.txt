@@ -1,0 +1,1 @@
+Expressive data stored here for Grad-CAM visualization
