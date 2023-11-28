@@ -17,31 +17,24 @@ The following steps are required to replicate our work:
 * Language Impairment Dataset (Regression) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores. The data is saved to `Connectome_regression_data/processed_data/expressive_data_or_receptive_data/foldk`, where `k` is the fold number.     
 * Seizure Outcome Dataset (Classification) - Use the script `convert_script_new_data_classification_to_generate_five_folds.m` inside `Connectome_classification_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for seizure outcome classification. The data is saved to `Connectome_classification_data/new_classification_data/foldk`, where `k` is the fold number.   
 
-## Training
+## Training and Testing
 
-* All the training scripts are located in the `networks` folder.
-* Train the expressive score model
+* All the training and testing scripts are located in the `networks` folder.
+* Train and test the language impairment expressive score model
 ```
 python dilate_CNN_RN_expressive.py
 ```
-
-## Testing
-
-1. The pre-trained models could be found in `checkpoints/pretrained_models`
-* Refer to the required folder `JHU or NYT`, `Infected or Deaths` for infected or death cases respectively and our model is in folder `STST`
-
-2. Test the model
-* An example for testing with `COVID_JHU` dataset's daily infected cases and `COVID_NYT` dataset's daily death cases with our model `STST` (name in code for STSGT model) is given here. The `... _best_model.pth` indicates the model with the lowest Mean Absolute Error (MAE) on the validation set. 
+* Train and test the language impairment receptive score model
 ```
-# For JHU Daily Infected cases data with our trained model
-python test.py --checkpoint "checkpoints/pretrained_models/JHU_States_Infected/STST/exp_2_1654.67_best_model.pth"
-
-# For NYT Daily Death cases data with our trained model
-python test.py --checkpoint "checkpoints/pretrained_models/NYT_States_Deaths/STST/exp_1_19.06_best_model.pth"
+python dilate_CNN_RN_receptive.py
+```
+* Train and test the postoperative seizure outcome model
+```
+python dilate_CNN_RN_classify_new.py
 ```
 
-## Notes
-* Please choose the correct configuration file with the `DATASET` variable in both `train.py` and `test.py`.
+## Activation map visualization
+* Refer to the `GRAD_CAM` folder to generate activation maps using the pretrained models (both weights in .h5 files and model architecture in .json files) and the test data inside `GRAD_CAM/processed_data/expressive_data_or_receptive_data`.
 
 ## Cite
 Please cite our paper if you find this work useful for your research:
