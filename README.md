@@ -11,14 +11,8 @@ This is the official TensorFlow (Keras) implementation of the paper "[Deep Relat
 ## Get Started
 The following steps are required to replicate our work:
 
-The step 2 below is followed in our paper. Note that the data of 51 patients has already been augmented to 510 augmentations per patient (per vector) using SMOTE augmentation.
-
-1. Preprocess datasets to divide original dataset into training and testing (51 patients: train - 41 and test - 10 patients).
-Use the raw data (private) of different densities (Densities used in paper: 01-High; 04-Medium; 08-Low) consisting of vectors for each of the 51 patients and convert each vector to a 116x116 connectome matrix for each patient.
-* Language Impairment Dataset (Regression) - Use the expressive and receptive raw data, `X_expressive_q_04.mat` or `X_receptive_q_04.mat`, where `04` denotes the density of the connectome data. Use the script `convert_script_regression_original_data.m` inside `Connectome_regression_data` folder to convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores.     
-* Seizure Outcome Dataset (Classification) - 
-
-2. Preprocess dataset and generate the five folds (both training and testing) of all 51 patients and their augmentations.
+* The data of 51 patients has already been augmented to 510 augmentations per patient (per vector) using SMOTE augmentation.
+* Preprocess dataset and generate the five folds (both training and testing) of all 51 patients and their augmentations.
 Use the raw data (private) of different densities (Densities used in paper: 01-High; 04-Medium; 08-Low) consisting of vectors for each of the 51 patients and 510 augmentations per patient (i.e., 510*51 + 51 = 26061 vectors). First divide the data and the corresponding augmentations into training (41 patients + augmentations) and testing (10 patients and augmentations). Then, convert each vector to a 116x116 connectome matrix for each patient. 
 * Language Impairment Dataset (Regression) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores. The data is saved to `Connectome_regression_data/processed_data/expressive_data/foldk`, where `k` is the fold number.     
 * Seizure Outcome Dataset (Classification) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores and divide into 5-folds for the 5-fold cross validation.  
