@@ -17,7 +17,7 @@ The following steps are required to replicate our work:
 * Preprocess dataset and generate the five folds (both training and testing) of all 51 patients and their augmentations - Use the raw data (private) of different densities (Densities used in paper: 01-High; 04-Medium; 08-Low) consisting of vectors for each of the 51 patients and 510 augmentations per patient (i.e., 510*51 + 51 = 26061 vectors). First divide the data and the corresponding augmentations into training (41 patients + augmentations) and testing (10 patients and augmentations). Then, convert each vector to a 116x116 connectome matrix for each patient. 
 * Language Impairment Dataset (Regression) - Use the script `convert_script_new_data_regression_to_divide_into_5_folds.m` inside `Connectome_regression_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for both expressive and receptive scores. The data is saved to `Connectome_regression_data/processed_data/expressive_data_or_receptive_data/foldk`, where `k` is the fold number.     
 * Seizure Outcome Dataset (Classification) - Use the script `convert_script_new_data_classification_to_generate_five_folds.m` inside `Connectome_classification_data` folder to divide into training and testing (for the 5-fold cross validation) and convert the vectors into 116x116 shaped connectome matrices for seizure outcome classification. The data is saved to `Connectome_classification_data/new_classification_data/foldk`, where `k` is the fold number.
-* Note: Set the correct data paths in all of the MATLAB (`.m`) files above.   
+* Note: Set the correct data paths to load and save the `.mat` files in all of the MATLAB (`.m`) scripts above.   
 
 ## Training and Testing
 
@@ -35,7 +35,7 @@ python dilate_CNN_RN_receptive.py
 python dilate_CNN_RN_classify_new.py
 ```
 * Note 1: The paths to the training and testing dataset must be provided correctly inside all of the above scripts.
-* Note 2: In all of the above scripts, uncomment the lines to save the trained model weights (.h5 file) and model architecture (.json file). These will be required during the activation map visualization.
+* Note 2: In all of the above scripts, uncomment the lines to save the trained model weights (.h5 file) and model architecture (.json file). These will be required during the activation map visualization. The paths to save the model weights and architecture must be provided correctly. 
 
 ## Activation map visualization
 * The visualization requires the keras-vis library.
